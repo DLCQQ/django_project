@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров</title>
+    <style>
+        /* Стили для каталога */
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .product h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Каталог товаров</h1>
+    <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/sm.png' %}" alt="Смартфон" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h3>Смартфон</h3>
+        <p>Мощный смартфон с высокой производительностью и камерой высокого разрешения.</p>
+        <p>Цена: 12000 рублей</p>
+        <p>1000 шт</p>
+        <p>товар добавлен 08.02.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/nout.png' %}" alt="Ноутбук" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h3>Ноутбук</h3>
+        <p>Легкий и компактный ноутбук для работы и развлечений.</p>
+        <p>Цена: 58000 рублей</p>
+        <p>300 шт</p>
+        <p>товар добавлен 7.02.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    </div>
+    <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/foto.png' %}" alt="Фотокамера" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h3>Фотокамера</h3>
+        <p>Профессиональная фотокамера с возможностью съемки в RAW формате.</p>
+        <p>Цена: 120000 рублей</p>
+        <p>25 шт</p>
+        <p>товар добавлен 11.1.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    </div>
+    <div class="product">
+        <h3>Принтер</h3>
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/print.png' %}" alt="Принтер" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <p>Лазерный принтер для печати документов.</p>
+        <p>Цена: 6000 рублей</p>
+        <p>250 шт</p>
+        <p>товар добавлен 20.2.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    </div>
+    <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/ven.png' %}" alt="Вентелятор" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h3>Вентилятор</h3>
+        <p>Переносной вентилятор для охлаждения в жаркие дни.</p>
+        <p>Цена: 5400 рублей</p>
+        <p>500 шт</p>
+        <p>товар добавлен 5.2.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/coffe.png' %}" alt="Кофемашина" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h3>Кофемашина</h3>
+        <p>Автоматическая кофемашина для приготовления вкусного кофе.</p>
+        <p>Цена: 20000 рублей</p>
+        <p>150 шт</p>
+        <p>товар добавлен 02.02.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    </div>
+    <div class="product">
+        <h3>Монитор</h3>
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/mon.png' %}" alt="Монитор" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <p>Широкоформатный монитор для работы и развлечений.</p>
+        <p>Цена: 18000 рублей</p>
+        <p>200 шт</p>
+        <p>товар добавлен 05.1.2024</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+    </div>
+    <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/tele.png' %}" alt="Телевизор" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" action="{% url 'my_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h3>Телевизор</h3>
+        <p>4K телевизор с большим экраном и качественной картинкой.</p>
+        <p>Цена: 50000 рублей</p>
+        <p>68 шт</p>
+        <p>товар добавлен 20.12.2023</p>
+        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Товар 1" onclick="addToCart(1, 'Товар 1')">Добавить в корзину</button>
+
+
+
+
+        <h2>Корзина</h2>
+
+        <ul>
+            {% for order in orders %}
+                <li>{{ order.name }}</li>
+            {% endfor %}
+        </ul>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function addToCart(product_id, product_name) {
+                // Получение CSRF-токена
+                var csrf_token = "{{ csrf_token }}";
+
+                // AJAX-запрос для добавления товара в корзину
+                $.ajax({
+                    type: 'POST',
+                    url: '/add_to_cart/',
+                    data: {
+                        'product_id': product_id,
+                        'product_name': product_name,
+                        'csrfmiddlewaretoken': csrf_token  // Передача CSRF-токена
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            // Обновление списка выбранных товаров на странице
+                            updateCartItems(response.cart_items);
+                        }
+                    },
+                    error: function() {
+                        // Обработка ошибок, если не удалось добавить товар в корзину
+                    }
+                });
+            }
+
+            function updateCartItems(cartItems) {
+                // Очистить список выбранных товаров на странице
+                $('#cart-items').empty();
+
+                // Добавить каждый товар из cartItems в список выбранных товаров на странице
+                for (var i = 0; i < cartItems.length; i++) {
+                    var item = cartItems[i];
+                    var listItem = $('<li>').text(item.name);
+                    $('#cart-items').append(listItem);
+                }
+            }
+        </script>
+
+</body>
+</html>
+</body>
+</html>
